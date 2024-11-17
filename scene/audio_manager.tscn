@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh503g4r7kkrw"]
+
+[ext_resource type="AudioStream" uid="uid://c1pjd3py6nyk5" path="res://assets/sound_effect/Limujii - Joy .mp3" id="1_kyxa4"]
+[ext_resource type="Script" path="res://script/audio_manager.gd" id="1_qbghx"]
+
+[node name="audioManager" type="Node"]
+script = ExtResource("1_qbghx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kyxa4")

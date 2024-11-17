@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://ofvbo5a7k4u3"]
+
+[ext_resource type="Script" path="res://script/load_menu.gd" id="1_y6b1v"]
+[ext_resource type="Texture2D" uid="uid://db57rbp2trtct" path="res://assets/ButtonsText/PremadeButtons_XGreen.png" id="2_lnrsd"]
+[ext_resource type="Texture2D" uid="uid://cw1wdq2pajdi3" path="res://assets/UI - icons/Backgound/Background_Blue.png" id="2_oaqxk"]
+[ext_resource type="Texture2D" uid="uid://jy2so4aa8iy3" path="res://assets/ButtonsText/PremadeButtons_XRed.png" id="3_skbeb"]
+[ext_resource type="FontFile" uid="uid://d4puvhile6vm" path="res://assets/fonts/Gluten-Bold.ttf" id="4_dimlk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6pbm"]
+bg_color = Color(0.112758, 0.514041, 0.633665, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.436835, 0.86784, 0.991633, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5pkj"]
+bg_color = Color(0.95534, 0, 0.203779, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.140447, 0.140447, 0.140447, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 30.0
+expand_margin_top = 10.0
+expand_margin_right = 30.0
+expand_margin_bottom = 10.0
+
+[node name="LoadMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y6b1v")
+
+[node name="back" type="Sprite2D" parent="."]
+position = Vector2(683, 383.5)
+scale = Vector2(0.711458, 0.712037)
+texture = ExtResource("2_oaqxk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 300)
+theme_override_styles/panel = SubResource("StyleBoxFlat_l6pbm")
+metadata/_edit_lock_ = true
+
+[node name="closeButton" type="TextureButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -54.0
+offset_top = -17.0
+offset_right = 10.0
+offset_bottom = 47.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_lnrsd")
+texture_pressed = ExtResource("3_skbeb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_top = 20.0
+offset_right = 138.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("4_dimlk")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_r5pkj")
+text = "Load Game"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 81.0
+offset_right = 974.0
+offset_bottom = 561.0
+
+[node name="SaveListContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 160
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="Panel/closeButton" to="." method="_on_close_button_pressed"]

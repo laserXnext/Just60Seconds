@@ -1,0 +1,65 @@
+[gd_scene load_steps=12 format=3 uid="uid://07c0ry4v7q8p"]
+
+[ext_resource type="Texture2D" uid="uid://cijjslnqg8q3n" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/torch/torch_1.png" id="1_bql15"]
+[ext_resource type="Texture2D" uid="uid://bndsjxyb5sy76" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/torch/torch_2.png" id="2_1jym4"]
+[ext_resource type="Texture2D" uid="uid://cwkivmvem3iqp" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/torch/torch_3.png" id="3_7qt5e"]
+[ext_resource type="Texture2D" uid="uid://druq1u0xvnd4" path="res://assets/2D Pixel Dungeon Asset Pack/items and trap_animation/torch/torch_4.png" id="4_c2fqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7t3r"]
+atlas = ExtResource("1_bql15")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0dy1"]
+atlas = ExtResource("2_1jym4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62k34"]
+atlas = ExtResource("3_7qt5e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkabi"]
+atlas = ExtResource("4_c2fqv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8hw10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7t3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0dy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62k34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkabi")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_ayvp1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_274bg"]
+gradient = SubResource("Gradient_ayvp1")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.815951, 0.0276074)
+
+[node name="Torch" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8hw10")
+animation = &"normal"
+autoplay = "normal"
+frame_progress = 0.512366
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.976471, 0.423529, 1)
+texture = SubResource("GradientTexture2D_274bg")

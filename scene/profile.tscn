@@ -1,0 +1,194 @@
+[gd_scene load_steps=13 format=3 uid="uid://b306uqcemc1q3"]
+
+[ext_resource type="Script" path="res://script/profile.gd" id="1_3eayd"]
+[ext_resource type="FontFile" uid="uid://coc7nbgt47g7s" path="res://assets/fonts/PixelOperator8.ttf" id="1_kfaj0"]
+[ext_resource type="Texture2D" uid="uid://cw1wdq2pajdi3" path="res://assets/UI - icons/Backgound/Background_Blue.png" id="2_vk2ih"]
+[ext_resource type="FontFile" uid="uid://ba8w6pudjptl8" path="res://assets/fonts/Gluten-Black.ttf" id="4_h27rg"]
+[ext_resource type="Texture2D" uid="uid://db57rbp2trtct" path="res://assets/ButtonsText/PremadeButtons_XGreen.png" id="5_vwrcs"]
+[ext_resource type="Texture2D" uid="uid://jy2so4aa8iy3" path="res://assets/ButtonsText/PremadeButtons_XRed.png" id="6_y2cu2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml7pl"]
+bg_color = Color(0.352941, 0.67451, 0.537255, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.470588, 0.321569, 0.435294, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0onht"]
+bg_color = Color(0.200921, 0.382704, 0.40405, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7mcx"]
+bg_color = Color(0.793967, 0.543653, 0.0980079, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yaxqh"]
+bg_color = Color(0.793967, 0.543653, 0.0980079, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6nxc"]
+bg_color = Color(0.793967, 0.543653, 0.0980079, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmjsp"]
+bg_color = Color(0.635271, 0.183726, 0.217539, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[node name="profile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3eayd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vk2ih")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="loginform" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -175.0
+offset_right = 260.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ml7pl")
+
+[node name="closeButton" type="TextureButton" parent="loginform"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.5
+offset_top = -21.5
+offset_right = 22.5
+offset_bottom = 42.5
+grow_horizontal = 0
+texture_normal = ExtResource("5_vwrcs")
+texture_pressed = ExtResource("6_y2cu2")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="username" type="LineEdit" parent="loginform"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -129.0
+offset_right = 196.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kfaj0")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_0onht")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0onht")
+placeholder_text = "Username"
+alignment = 1
+
+[node name="password" type="LineEdit" parent="loginform"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -34.0
+offset_right = 196.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_kfaj0")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_0onht")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0onht")
+placeholder_text = "Password"
+alignment = 1
+
+[node name="submit" type="Button" parent="loginform"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -115.0
+offset_top = -115.0
+offset_right = 97.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_h27rg")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxFlat_m7mcx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yaxqh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x6nxc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cmjsp")
+text = "Create"
+
+[connection signal="pressed" from="loginform/closeButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="loginform/submit" to="." method="_on_submit_pressed"]

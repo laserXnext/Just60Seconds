@@ -1,0 +1,154 @@
+[gd_scene load_steps=22 format=3 uid="uid://b2ree5rifop6q"]
+
+[ext_resource type="Script" path="res://script/gandalf.gd" id="1_6kakj"]
+[ext_resource type="Texture2D" uid="uid://dwxo83pcaj4hk" path="res://assets/wizard_ice/idle_1.png" id="2_bfu7w"]
+[ext_resource type="Texture2D" uid="uid://g0piceo2qevq" path="res://assets/CharacterSheet_CharacterFront.png" id="2_jcdys"]
+[ext_resource type="PackedScene" uid="uid://c73igp405msq6" path="res://scene/interaction_area.tscn" id="3_wksxg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjwno"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnm0"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(350, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhhmi"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(700, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rro0n"]
+atlas = ExtResource("2_bfu7w")
+region = Rect2(0, 0, 408, 424)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxwn6"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6h47"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(350, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqrxl"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(700, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84tgb"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(0, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8ahs"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(350, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi2rx"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(700, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiper"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(1050, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eii23"]
+atlas = ExtResource("2_jcdys")
+region = Rect2(1400, 350, 350, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cn527"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjwno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxnm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhhmi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rro0n")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxwn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6h47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqrxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84tgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8ahs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi2rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiper")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eii23")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t00fy"]
+radius = 25.318
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u135r"]
+radius = 86.1452
+
+[sub_resource type="Gradient" id="Gradient_5at0v"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f36ui"]
+gradient = SubResource("Gradient_5at0v")
+width = 150
+height = 150
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.852761, 0.0828221)
+
+[node name="Gandalf" type="CharacterBody2D"]
+script = ExtResource("1_6kakj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.165714, 0.165714)
+sprite_frames = SubResource("SpriteFrames_cn527")
+animation = &"talk"
+frame_progress = 0.768221
+
+[node name="hit-box" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t00fy")
+debug_color = Color(0.939075, 1.34766e-05, 0.620946, 0.42)
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_wksxg")]
+position = Vector2(0, -10)
+collision_mask = 3
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_u135r")
+debug_color = Color(0.636768, 0.525047, 0.0997443, 0.42)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0.937255, 0.917647, 0.329412, 1)
+texture = SubResource("GradientTexture2D_f36ui")

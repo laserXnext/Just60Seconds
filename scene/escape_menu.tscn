@@ -1,0 +1,175 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl7t51xb863ki"]
+
+[ext_resource type="FontFile" uid="uid://dlww658o50acx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_41xio"]
+[ext_resource type="Texture2D" uid="uid://dyue25pnd6y1o" path="res://assets/BoxesBanners/Box_Blue_Rounded.png" id="1_llix7"]
+[ext_resource type="Script" path="res://script/escape_menu.gd" id="1_osfpb"]
+[ext_resource type="Texture2D" uid="uid://bmy4hp6863yy5" path="res://assets/ButtonsIcons/SVG/IconButton_Small_Green_Circle.svg" id="3_y5rpc"]
+[ext_resource type="Texture2D" uid="uid://bsruw307vxorg" path="res://assets/Icons/Icon_Small_Blank_X.png" id="4_yuo5a"]
+[ext_resource type="Texture2D" uid="uid://b67h74jximq83" path="res://assets/ButtonsIcons/SVG/IconButton_Small_Red_Rounded.svg" id="5_3l6kb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyy2h"]
+bg_color = Color(0.929412, 0.741176, 0.0235294, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl8xi"]
+bg_color = Color(0.206962, 0.665604, 3.85046e-07, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+shadow_size = 5
+
+[node name="escapeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_osfpb")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -683.0
+offset_top = -384.0
+offset_right = 683.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(683, 384)
+size_flags_horizontal = 4
+color = Color(0.689283, 0.266, 0.124632, 0.227451)
+
+[node name="back" type="TextureRect" parent="CanvasGroup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -140.0
+offset_right = 170.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_llix7")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasGroup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -88.0
+offset_right = 149.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="resume" type="Button" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_41xio")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl8xi")
+text = "Resume"
+
+[node name="save" type="Button" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_41xio")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl8xi")
+text = "Save"
+
+[node name="quit" type="Button" parent="CanvasGroup/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_41xio")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eyy2h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jl8xi")
+text = "Mainmenu"
+
+[node name="Close" type="TextureButton" parent="CanvasGroup"]
+offset_left = 137.0
+offset_top = -160.0
+offset_right = 185.0
+offset_bottom = -112.0
+texture_normal = ExtResource("3_y5rpc")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasGroup/Close"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yuo5a")
+expand_mode = 1
+
+[node name="Title" type="TextureRect" parent="CanvasGroup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -179.0
+offset_right = 118.5
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3l6kb")
+expand_mode = 1
+
+[node name="pauseTxt" type="Label" parent="CanvasGroup/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -16.0
+offset_right = 96.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_41xio")
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+
+[connection signal="pressed" from="CanvasGroup/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasGroup/VBoxContainer/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasGroup/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasGroup/Close" to="." method="_on_close_pressed"]

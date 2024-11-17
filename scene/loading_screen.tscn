@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://b80fut7iinl2s"]
+
+[ext_resource type="Texture2D" uid="uid://rpsqkw3s6kar" path="res://assets/Game&Logo/Black&White-Logo.png" id="1_0wboh"]
+[ext_resource type="Script" path="res://script/loading_screen.gd" id="1_1hlcp"]
+[ext_resource type="Texture2D" uid="uid://crmumiiv6uy35" path="res://assets/Game&Logo/run-white 2.0.png" id="2_6kdui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6om37"]
+atlas = ExtResource("2_6kdui")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp55b"]
+atlas = ExtResource("2_6kdui")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0bx6"]
+atlas = ExtResource("2_6kdui")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j7ak"]
+atlas = ExtResource("2_6kdui")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhj6o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6om37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp55b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0bx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j7ak")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayc5"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4o27o"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="loadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1hlcp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="logo" type="Sprite2D" parent="ColorRect"]
+position = Vector2(683, 203)
+texture = ExtResource("1_0wboh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(1249, 605)
+scale = Vector2(0.232422, 0.232422)
+sprite_frames = SubResource("SpriteFrames_yhj6o")
+autoplay = "default"
+frame = 3
+frame_progress = 0.346748
+
+[node name="ProgressBar" type="ProgressBar" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 108.0
+offset_top = -96.0
+offset_right = -99.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_cayc5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4o27o")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+autostart = true

@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6iqbp6kqowxa"]
+
+[ext_resource type="Script" path="res://script/fire.gd" id="1_3rx6k"]
+[ext_resource type="Texture2D" uid="uid://d2fjbv12fd6ip" path="res://assets/Laser Sprites/02.png" id="2_ye2u6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txh7j"]
+size = Vector2(13.9991, 8.06942)
+
+[sub_resource type="Curve" id="Curve_opsba"]
+max_value = 4.0
+_data = [Vector2(0.0114504, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gqqrl"]
+offsets = PackedFloat32Array(0.473214, 0.803571)
+colors = PackedColorArray(0.941176, 0.141176, 0.294118, 1, 0.976471, 0.658824, 0.721569, 1)
+
+[sub_resource type="Gradient" id="Gradient_fygkw"]
+offsets = PackedFloat32Array(0.626087, 0.956522)
+colors = PackedColorArray(0.996078, 0.180392, 0.329412, 1, 1, 0.992157, 0.992157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sryqy"]
+gradient = SubResource("Gradient_fygkw")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.895706, 0.0582822)
+
+[node name="fire" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_3rx6k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00272007, 0.0231594)
+shape = SubResource("RectangleShape2D_txh7j")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+preprocess = 0.1
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("Curve_opsba")
+color_ramp = SubResource("Gradient_gqqrl")
+
+[node name="Fb" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.466014, 0.321147)
+texture = ExtResource("2_ye2u6")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(0.76714, 0)
+scale = Vector2(0.654108, 0.533201)
+color = Color(0.788235, 0.176471, 0.290196, 1)
+texture = SubResource("GradientTexture2D_sryqy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
