@@ -6,6 +6,8 @@ var password = Global.password
 var save_directory: String = "C:/Users/LENOVO/Documents/noidea/saves/"
 var save_path: String = save_directory + userName + "_data.json"
 
+const SEC_KEY = Global.THE_KEY
+
 func _process(delta: float) -> void:
 	_save()
 
@@ -17,7 +19,7 @@ func _save():
 	}
 
 	var json_string := JSON.stringify(data)
-	var file_access := FileAccess.open(save_path, FileAccess.WRITE)
+	var file_access := FileAccess.open_encrypted_with_pass(save_path, FileAccess.WRITE, SEC_KEY)
 	
 	var dir := DirAccess.open(save_directory)
 	if dir == null:

@@ -3,7 +3,9 @@ class_name player
 
 signal health_ranout
 
-var health = 100.0
+const DamageRate = 10.0
+
+var health = 200.0
 
 func _physics_process(delta: float) -> void:
 	if DialogManager.is_dialog_active:
@@ -24,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		%player_ani.play_man_idle()
 	
-	const DamageRate = 15.0
 	var overlapping_mobs = %HitBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DamageRate * overlapping_mobs.size() * delta
@@ -37,8 +38,13 @@ func _physics_process(delta: float) -> void:
 		position.x = screen_size.x
 	elif position.x > screen_size.x:
 		position.x = 0
-
 	if position.y < 0:
 		position.y = screen_size.y
 	elif position.y > screen_size.y:
 		position.y = 0
+	
+func take_damage() -> void:
+	health -= DamageRate * Global.roundNo
+	%healthbar.value = health
+	if health <= 0.0:
+		health_ranout.emit()

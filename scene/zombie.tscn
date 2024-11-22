@@ -53,12 +53,12 @@
 [ext_resource type="Texture2D" uid="uid://du667sq288afb" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Running/0_Zombie_Villager_Running_010.png" id="50_e8xef"]
 [ext_resource type="Texture2D" uid="uid://b6mbo4fkpav27" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Running/0_Zombie_Villager_Running_011.png" id="51_xpo5j"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vinoi"]
-radius = 40.0
-height = 124.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0hk4"]
+radius = 31.9412
+height = 106.471
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_71v7s"]
-size = Vector2(44, 79)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fsc7"]
+radius = 63.907
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fy8j5"]
 animations = [{
@@ -101,7 +101,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 12.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -192,7 +192,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 12.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -233,23 +233,28 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 24.0
 }]
 
 [node name="Zombie" type="CharacterBody2D"]
+scale = Vector2(0.563536, 0.563536)
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_ds7pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_vinoi")
+shape = SubResource("CapsuleShape2D_d0hk4")
 
-[node name="attack-box" type="CollisionShape2D" parent="."]
-position = Vector2(63, 7.5)
-shape = SubResource("RectangleShape2D_71v7s")
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="attack-box" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.96046e-08, 4.76837e-07)
+shape = SubResource("CircleShape2D_4fsc7")
 debug_color = Color(0.445931, 0, 0.0725447, 0.42)
 
 [node name="zombieAnime" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, 4.76837e-07)
 scale = Vector2(0.206667, 0.206667)
 sprite_frames = SubResource("SpriteFrames_fy8j5")
 animation = &"attack"
-frame = 3
-frame_progress = 0.651572
+frame_progress = 0.607372

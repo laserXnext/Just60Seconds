@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b306uqcemc1q3"]
+[gd_scene load_steps=26 format=3 uid="uid://b306uqcemc1q3"]
 
 [ext_resource type="Script" path="res://script/profile.gd" id="1_3eayd"]
 [ext_resource type="FontFile" uid="uid://coc7nbgt47g7s" path="res://assets/fonts/PixelOperator8.ttf" id="1_kfaj0"]
@@ -6,6 +6,9 @@
 [ext_resource type="FontFile" uid="uid://ba8w6pudjptl8" path="res://assets/fonts/Gluten-Black.ttf" id="4_h27rg"]
 [ext_resource type="Texture2D" uid="uid://db57rbp2trtct" path="res://assets/ButtonsText/PremadeButtons_XGreen.png" id="5_vwrcs"]
 [ext_resource type="Texture2D" uid="uid://jy2so4aa8iy3" path="res://assets/ButtonsText/PremadeButtons_XRed.png" id="6_y2cu2"]
+[ext_resource type="Texture2D" uid="uid://g0piceo2qevq" path="res://assets/CharacterSheet_CharacterFront.png" id="7_5nk06"]
+[ext_resource type="Texture2D" uid="uid://cvov7xuxnhm4i" path="res://assets/BoxesBanners/TextBox_Blank_Middle.png" id="8_tqeog"]
+[ext_resource type="FontFile" uid="uid://cbnc55c41vac3" path="res://assets/fonts/Gluten-ExtraLight.ttf" id="9_r6gcb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ml7pl"]
 bg_color = Color(0.352941, 0.67451, 0.537255, 1)
@@ -71,6 +74,77 @@ expand_margin_left = 10.0
 expand_margin_top = 5.0
 expand_margin_right = 10.0
 expand_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpekw"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdymv"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(350, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qu7"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(700, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpcb6"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(1050, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiwoh"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(0, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwncm"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(350, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f13ga"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(700, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hydb"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(1050, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl5ov"]
+atlas = ExtResource("7_5nk06")
+region = Rect2(1400, 350, 350, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsr0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpekw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdymv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0qu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpcb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiwoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwncm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f13ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hydb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl5ov")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 9.0
+}]
 
 [node name="profile" type="Control"]
 layout_mode = 3
@@ -190,5 +264,45 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_x6nxc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmjsp")
 text = "Create"
 
+[node name="npc" type="AnimatedSprite2D" parent="."]
+position = Vector2(255, 440)
+scale = Vector2(0.75, 0.735)
+sprite_frames = SubResource("SpriteFrames_nsr0o")
+animation = &"talk"
+autoplay = "talk"
+frame_progress = 0.240017
+flip_h = true
+
+[node name="MessageBox" type="Sprite2D" parent="npc"]
+position = Vector2(-7.99999, -330.612)
+scale = Vector2(0.527292, 0.50974)
+texture = ExtResource("8_tqeog")
+
+[node name="message" type="Label" parent="npc/MessageBox"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -473.0
+offset_top = -262.0
+offset_right = -659.0
+offset_bottom = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_r6gcb")
+theme_override_font_sizes/font_size = 80
+text = "Ribbit! Please hop in your username, but the password? That's just tadpole-tional!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="npc"]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="loginform/closeButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="loginform/submit" to="." method="_on_submit_pressed"]
+[connection signal="timeout" from="npc/Timer" to="." method="_on_timer_timeout"]

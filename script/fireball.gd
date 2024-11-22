@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-const BULLET_COUNT = 5
+const BULLET_COUNT = 8
 const SPREAD_ANGLE = 0.2
 
 func _physics_process(delta: float) -> void:

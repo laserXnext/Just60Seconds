@@ -111,15 +111,15 @@ animations = [{
 radius = 25.318
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u135r"]
-radius = 86.1452
+radius = 70.1783
 
 [sub_resource type="Gradient" id="Gradient_5at0v"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_f36ui"]
 gradient = SubResource("Gradient_5at0v")
-width = 150
-height = 150
+width = 512
+height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.852761, 0.0828221)
