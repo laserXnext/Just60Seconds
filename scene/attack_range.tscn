@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfus2dguicc2j"]
+
+[ext_resource type="Script" path="res://script/attack_range.gd" id="1_x7ewu"]
+[ext_resource type="Texture2D" uid="uid://b31q2s2p7h0fu" path="res://assets/bullets/blue-bullet@3x.png" id="2_rj1ih"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4m6fo"]
+radius = 349.527
+
+[node name="attack-range" type="Area2D"]
+script = ExtResource("1_x7ewu")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+scale = Vector2(1.00169, 1)
+
+[node name="orb" type="Sprite2D" parent="Marker2D"]
+position = Vector2(105.822, 0)
+scale = Vector2(0.530356, 0.53125)
+texture = ExtResource("2_rj1ih")
+
+[node name="shoot-point" type="Marker2D" parent="Marker2D/orb"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.00169, 1)
+shape = SubResource("CircleShape2D_4m6fo")
+debug_color = Color(0.995688, 0, 0.200784, 0.42)
+
+[node name="attack-timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="attack-timer" to="." method="_on_timer_timeout"]

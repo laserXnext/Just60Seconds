@@ -6,7 +6,8 @@ extends CharacterBody2D
 
 
 const lines: Array[String] = [
-	"Ribbit! You've made it this far, traveler.",
+	"Ribbit!",
+	"You've made it this far, traveler.",
 	"To pass to the next round,",
 	"you must answer my question."
 	]

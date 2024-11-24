@@ -4,6 +4,7 @@ extends Control
 @onready var save_list_container: VBoxContainer = $Panel/ScrollContainer/SaveListContainer
 
 const SAVE_DIRECTORY = "C:/Users/LENOVO/Documents/noidea/saves/"
+const SEC_KEY = Global.THE_KEY
 
 func _ready() -> void:
 	_load_saves()
@@ -23,7 +24,7 @@ func _load_saves() -> void:
 	dir.list_dir_end()
 
 func _load_save_file(file_path: String) -> void:
-	var file_access := FileAccess.open(file_path, FileAccess.READ)
+	var file_access := FileAccess.open_encrypted_with_pass(file_path, FileAccess.READ, SEC_KEY)
 	if not file_access:
 		print("Error opening file: ", file_path)
 		return

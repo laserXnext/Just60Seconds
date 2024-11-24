@@ -3,6 +3,9 @@ extends Control
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var buttons = $ButtonContainer.get_children()
+@onready var message: Label = $"../npc/MessageBox/message"
+@onready var wait_timer: Timer = $"../npc/waitTimer"
+@onready var message_box: Sprite2D = $"../npc/MessageBox"
 
 var url = "http://marcconrad.com/uob/banana/api.php?out=json"
 const next_scene: String = "res://scene/game.tscn"
@@ -85,15 +88,30 @@ func setup_answer_buttons() -> void:
 func _on_answer_selected(answer: String) -> void:
 	if answer == solution:
 		print("Correct Answer!")
+		message.text = "Ribbit-tastic! You’re sharper than a dragonfly's wings!"
+		animate_message_box()
 		roundNo += 1
 		Global.roundNo = roundNo
 		open_next_scene() 
 	else:
 		print("Wrong Answer!")
+		message.text = "Ribbit... Nope! That answer’s croak-tastrophically wrong!"
+		animate_message_box()
 		roundNo = 1
 		Global.roundNo = roundNo
 		open_next_scene()
 
-# Function to open the next scene (game scene)
 func open_next_scene() -> void:
+	wait_timer.start()
+	await wait_timer.timeout
 	get_tree().change_scene_to_file(next_scene)
+	
+func animate_message_box() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(message_box, "scale", Vector2(0.6, 0.6), 0.3)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(message_box, "scale", Vector2(0.527, 0.51), 0.3)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN)

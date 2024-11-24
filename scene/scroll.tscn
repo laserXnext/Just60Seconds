@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcf66ulibnss4"]
+[gd_scene load_steps=22 format=3 uid="uid://bcf66ulibnss4"]
 
 [ext_resource type="Texture2D" uid="uid://cd44yc1hajmyc" path="res://assets/UI - icons/Backgound/Background_Yellow.png" id="1_2j2bf"]
+[ext_resource type="Script" path="res://script/scroll.gd" id="1_bf2hj"]
 [ext_resource type="Texture2D" uid="uid://cmfmecvk6l7sb" path="res://assets/Scroll/square.png" id="1_cugd2"]
 [ext_resource type="FontFile" uid="uid://dlww658o50acx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_ayllj"]
 [ext_resource type="Script" path="res://script/api_request.gd" id="2_uad8r"]
 [ext_resource type="Texture2D" uid="uid://d3lx0c88a6asb" path="res://assets/question.png" id="4_e2jm3"]
+[ext_resource type="Texture2D" uid="uid://g0piceo2qevq" path="res://assets/CharacterSheet_CharacterFront.png" id="6_qu1vw"]
+[ext_resource type="Texture2D" uid="uid://cvov7xuxnhm4i" path="res://assets/BoxesBanners/TextBox_Blank_Middle.png" id="7_pbxfn"]
+[ext_resource type="FontFile" uid="uid://cbnc55c41vac3" path="res://assets/fonts/Gluten-ExtraLight.ttf" id="8_a1q40"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6sqg"]
 bg_color = Color(0.478666, 0, 0.190635, 1)
@@ -25,7 +29,79 @@ corner_radius_bottom_left = 10
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpekw"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(0, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdymv"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(350, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qu7"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(700, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpcb6"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(1050, 0, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fiwoh"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(0, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwncm"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(350, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f13ga"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(700, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hydb"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(1050, 350, 350, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl5ov"]
+atlas = ExtResource("6_qu1vw")
+region = Rect2(1400, 350, 350, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fhg5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpekw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdymv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0qu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpcb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fiwoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwncm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f13ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hydb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl5ov")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 9.0
+}]
+
 [node name="Scroll" type="Node2D"]
+script = ExtResource("1_bf2hj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -134,6 +210,45 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_o6sqg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o6sqg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o6sqg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gs0qn")
+
+[node name="npc" type="AnimatedSprite2D" parent="."]
+position = Vector2(-428, 68)
+scale = Vector2(0.75, 0.735)
+sprite_frames = SubResource("SpriteFrames_fhg5n")
+animation = &"talk"
+autoplay = "talk"
+frame = 6
+frame_progress = 0.950702
+flip_h = true
+
+[node name="MessageBox" type="Sprite2D" parent="npc"]
+position = Vector2(-7.99999, -330.612)
+scale = Vector2(0.527292, 0.50974)
+texture = ExtResource("7_pbxfn")
+
+[node name="message" type="Label" parent="npc/MessageBox"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -473.0
+offset_top = -262.0
+offset_right = -659.0
+offset_bottom = -535.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_a1q40")
+theme_override_font_sizes/font_size = 80
+text = "Take your time, but not too much—I’ve got flies to catch, you know!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="waitTimer" type="Timer" parent="npc"]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="pressed" from="apiRequest/Button" to="apiRequest" method="_on_button_pressed"]
 [connection signal="request_completed" from="apiRequest/HTTPRequest" to="apiRequest" method="_on_http_request_request_completed"]

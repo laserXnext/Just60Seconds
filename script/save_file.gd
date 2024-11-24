@@ -12,7 +12,7 @@ var attempt : int = 0
 
 const SAVE_DIRECTORY = "C:/Users/LENOVO/Documents/noidea/saves/"
 const GAME : PackedScene = preload("res://scene/game.tscn")
-
+const SEC_KEY = Global.THE_KEY
 
 func _ready() -> void:
 	load_save_data()
@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func load_save_data() -> void:
 	var file_path: String = SAVE_DIRECTORY + username.text + "_data.json"
-	var file := FileAccess.open(file_path, FileAccess.READ)
+	var file := FileAccess.open_encrypted_with_pass(file_path, FileAccess.READ, SEC_KEY)
 	if file:
 		var json = JSON.new()
 		var error_code = json.parse(file.get_as_text())

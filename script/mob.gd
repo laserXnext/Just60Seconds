@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
 @onready var player = get_node("/root/game/player")
+@onready var health_bar: ProgressBar = $healthBar
 
 var difficulty = int(Global.roundNo)
 
-var health = 3 * difficulty
+var health 
 
 func _ready() -> void:
+	health = 3 * difficulty
+	health_bar.init_health(health)
 	%Slime.play_walk()
 
 func _physics_process(delta: float) -> void:
@@ -17,7 +20,7 @@ func _physics_process(delta: float) -> void:
 func take_damage():
 	health -= difficulty
 	%Slime.play_hurt()
-	
+	health_bar.health = health
 	if health == 0:
 		queue_free()
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")

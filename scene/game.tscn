@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://dgmqvtwql70pn"]
+[gd_scene load_steps=61 format=4 uid="uid://dgmqvtwql70pn"]
 
 [ext_resource type="Script" path="res://script/game.gd" id="1_qv7cb"]
 [ext_resource type="PackedScene" uid="uid://dypt7g7q5g2jg" path="res://scene/player.tscn" id="1_wmnq8"]
@@ -6,19 +6,19 @@
 [ext_resource type="FontFile" uid="uid://dlww658o50acx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_6ye0n"]
 [ext_resource type="Texture2D" uid="uid://cw3iwqijcyhil" path="res://assets/Sprout Land/Tilesets/Tilled_Dirt_v2.png" id="4_pnrlg"]
 [ext_resource type="Texture2D" uid="uid://x41sfbl87ov1" path="res://assets/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="4_q5w3k"]
+[ext_resource type="Shader" path="res://shader/deathscreen.gdshader" id="6_bfqfy"]
 [ext_resource type="Texture2D" uid="uid://iwf6mpd77psr" path="res://assets/CharacterAnimations/Die.png" id="6_cdkoe"]
+[ext_resource type="Texture2D" uid="uid://c4nqi30nss8x1" path="res://assets/Wood and Paper UI/game-over.png" id="6_ujdu1"]
 [ext_resource type="Texture2D" uid="uid://vn5j4ifg5t5q" path="res://assets/UI - icons/Menu Buttons/Clear Menu Buttons/Buttons-return.png" id="7_v3m1o"]
 [ext_resource type="Texture2D" uid="uid://didiao0m5mwn2" path="res://assets/UI - icons/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-return.png" id="8_bjyd6"]
 [ext_resource type="Script" path="res://script/countdown.gd" id="9_mbjxa"]
 [ext_resource type="Texture2D" uid="uid://cvfhdbyb7ocrh" path="res://assets/UI - icons/Menu Buttons/Clear Menu Buttons/Buttons-house.png" id="10_7qlto"]
-[ext_resource type="FontFile" uid="uid://v1lsyq21bes2" path="res://assets/fonts/Rubik_Wet_Paint/RubikWetPaint-Regular.ttf" id="10_g6r34"]
 [ext_resource type="Texture2D" uid="uid://rp4hgtob8m2s" path="res://assets/clock/clock sprite.png" id="11_1qsld"]
 [ext_resource type="Texture2D" uid="uid://o8vfmgncd5dg" path="res://assets/UI - icons/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-house.png" id="11_qjc0n"]
-[ext_resource type="FontFile" uid="uid://4bg25lw7xo2c" path="res://assets/fonts/Chokokutai/Chokokutai-Regular.ttf" id="12_qrcg2"]
 [ext_resource type="Texture2D" uid="uid://uddl57ugdd80" path="res://assets/Paper-Panel/paper_panel_360_x_150.png" id="13_28d0v"]
-[ext_resource type="Texture2D" uid="uid://ctsr2yl622jyc" path="res://assets/Leah_2.webp" id="13_a7m3b"]
 [ext_resource type="Shader" path="res://shader/game.gdshader" id="13_olvm2"]
-[ext_resource type="FontFile" uid="uid://ddhvjmcfs30qa" path="res://assets/fonts/Itim/Itim-Regular.ttf" id="14_pk7a5"]
+[ext_resource type="Texture2D" uid="uid://cvov7xuxnhm4i" path="res://assets/BoxesBanners/TextBox_Blank_Middle.png" id="13_xnkqk"]
+[ext_resource type="FontFile" uid="uid://cbnc55c41vac3" path="res://assets/fonts/Gluten-ExtraLight.ttf" id="14_5eefd"]
 [ext_resource type="PackedScene" uid="uid://cl7t51xb863ki" path="res://scene/escape_menu.tscn" id="15_gxldy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k078s"]
@@ -282,6 +282,11 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8k11"]
+shader = ExtResource("6_bfqfy")
+shader_parameter/lod = 2.5
+shader_parameter/mix_percentage = 0.3
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xs7r4"]
 atlas = ExtResource("6_cdkoe")
 region = Rect2(0, 0, 512, 512)
@@ -309,48 +314,28 @@ region = Rect2(2560, 0, 512, 512)
 [sub_resource type="SpriteFrames" id="SpriteFrames_5x0je"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_xs7r4")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_a8a2w")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_rk83r")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_heo7b")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_3ag0c")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_apa4o")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
-"speed": 6.0
+"speed": 12.0
 }]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yldo3"]
-bg_color = Color(0.192969, 0.395792, 0.369691, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.247563, 0.689172, 0.443763, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
-
-[sub_resource type="LabelSettings" id="LabelSettings_1a00g"]
-font = ExtResource("10_g6r34")
-font_size = 64
-font_color = Color(0.819059, 0.0325701, 0.210697, 1)
-outline_size = 5
-shadow_size = 0
-shadow_color = Color(0.892328, 0.17396, 0.574233, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ix6hg"]
 bg_color = Color(0.831373, 0.823529, 0.811765, 1)
@@ -461,18 +446,6 @@ animations = [{
 "speed": 13.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuuy2"]
-bg_color = Color(0.854902, 0.678431, 0.447059, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.694118, 0.305882, 0.0196078, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5pvr7"]
 frequency = 0.0075
 
@@ -488,6 +461,52 @@ shader = ExtResource("13_olvm2")
 shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_47ifu")
+
+[sub_resource type="Gradient" id="Gradient_x1ku8"]
+colors = PackedColorArray(1, 1, 1, 0.0980392, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r2nls"]
+gradient = SubResource("Gradient_x1ku8")
+
+[sub_resource type="Gradient" id="Gradient_m73et"]
+offsets = PackedFloat32Array(0, 0.538462, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pg82k"]
+gradient = SubResource("Gradient_m73et")
+
+[sub_resource type="Curve" id="Curve_7wpqb"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.119643, 108.156), 0.0, 0.0, 0, 0, Vector2(0.251786, -64.7273), 0.0, 0.0, 0, 0, Vector2(0.383929, 70.3377), 0.0, 0.0, 0, 0, Vector2(0.508929, -59.3247), 0.0, 0.0, 0, 0, Vector2(0.630357, 97.3506), 0.0, 0.0, 0, 0, Vector2(0.7625, -59.3247), 0.0, 0.0, 0, 0, Vector2(0.8625, 102.753), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 9
+
+[sub_resource type="CurveTexture" id="CurveTexture_3qp7n"]
+curve = SubResource("Curve_7wpqb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3gi7h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1366, 768, 1)
+gravity = Vector3(100, 20, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 6.0
+tangential_accel_curve = SubResource("CurveTexture_3qp7n")
+damping_max = 100.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_pg82k")
+color_initial_ramp = SubResource("GradientTexture1D_r2nls")
+
+[sub_resource type="Gradient" id="Gradient_0ck0x"]
+offsets = PackedFloat32Array(0, 0.484211, 1)
+colors = PackedColorArray(1, 0.666667, 0.6, 0, 1, 0.658824, 0.592157, 1, 1, 0.658824, 0.596078, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ke34p"]
+gradient = SubResource("Gradient_0ck0x")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
 
 [node name="game" type="Node2D"]
 y_sort_enabled = true
@@ -517,7 +536,7 @@ rotation = -0.00077821
 metadata/_edit_lock_ = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.6
 autostart = true
 
 [node name="DeathScreen" type="Node" parent="."]
@@ -528,58 +547,32 @@ layer = 20
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="DeathScreen/youdead"]
+material = SubResource("ShaderMaterial_d8k11")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.827451)
+color = Color(0.966053, 0.496558, 0.499848, 0.25098)
 
-[node name="death" type="AnimatedSprite2D" parent="DeathScreen/youdead"]
-position = Vector2(346, 476)
-scale = Vector2(0.492188, 0.492188)
-sprite_frames = SubResource("SpriteFrames_5x0je")
-animation = &"die"
-autoplay = "die"
-frame_progress = 0.912174
+[node name="deathScreen" type="TextureRect" parent="DeathScreen/youdead"]
+offset_left = 752.0
+offset_top = 128.0
+offset_right = 1267.0
+offset_bottom = 643.0
+texture = ExtResource("6_ujdu1")
 
-[node name="Panel" type="Panel" parent="DeathScreen/youdead"]
-offset_left = 753.0
-offset_top = 174.0
-offset_right = 1253.0
-offset_bottom = 624.0
-pivot_offset = Vector2(250, 225)
-theme_override_styles/panel = SubResource("StyleBoxFlat_yldo3")
-
-[node name="Label" type="Label" parent="DeathScreen/youdead/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -170.0
-offset_right = 184.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "You Died"
-label_settings = SubResource("LabelSettings_1a00g")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Restart" type="TextureButton" parent="DeathScreen/youdead/Panel"]
+[node name="Restart" type="TextureButton" parent="DeathScreen/youdead/deathScreen"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -236.0
-offset_right = -50.0
-offset_bottom = -136.0
+offset_left = -144.5
+offset_top = -197.0
+offset_right = -44.5
+offset_bottom = -97.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("7_v3m1o")
@@ -587,77 +580,50 @@ texture_pressed = ExtResource("8_bjyd6")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Home" type="TextureButton" parent="DeathScreen/youdead/Panel"]
+[node name="Home" type="TextureButton" parent="DeathScreen/youdead/deathScreen"]
 layout_mode = 0
-offset_left = 300.0
-offset_top = 214.0
-offset_right = 400.0
-offset_bottom = 314.0
+offset_left = 313.0
+offset_top = 318.0
+offset_right = 413.0
+offset_bottom = 418.0
 texture_normal = ExtResource("10_7qlto")
 texture_pressed = ExtResource("11_qjc0n")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="restart" type="Label" parent="DeathScreen/youdead/Panel"]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 317.0
-offset_right = 199.0
-offset_bottom = 416.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_qrcg2")
-theme_override_font_sizes/font_size = 32
-text = "Try
-Again"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="death" type="AnimatedSprite2D" parent="DeathScreen/youdead"]
+position = Vector2(350.447, 496.214)
+scale = Vector2(0.492188, 0.492188)
+sprite_frames = SubResource("SpriteFrames_5x0je")
+animation = &"die"
+autoplay = "die"
+frame = 5
+frame_progress = 1.0
 
-[node name="home" type="Label" parent="DeathScreen/youdead/Panel"]
-layout_mode = 0
-offset_left = 305.0
-offset_top = 317.0
-offset_right = 403.0
-offset_bottom = 416.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("12_qrcg2")
-theme_override_font_sizes/font_size = 32
-text = "Game
-Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="MessageBox" type="Sprite2D" parent="DeathScreen/youdead"]
+position = Vector2(406.447, 284.214)
+scale = Vector2(0.527292, 0.50974)
+texture = ExtResource("13_xnkqk")
 
-[node name="RoundOver" type="Node" parent="."]
-
-[node name="youwin" type="CanvasLayer" parent="RoundOver"]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="RoundOver/youwin"]
+[node name="message" type="Label" parent="DeathScreen/youdead/MessageBox"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -473.0
+offset_top = -262.0
+offset_right = -659.0
+offset_bottom = -535.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.521569)
-
-[node name="Label" type="Label" parent="RoundOver/youwin"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -32.0
-offset_right = 212.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.678431, 0, 1)
-theme_override_fonts/font = ExtResource("4_6ye0n")
-theme_override_font_sizes/font_size = 64
-text = "You Won"
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_5eefd")
+theme_override_font_sizes/font_size = 80
+text = "Guess I’m hopping straight to the afterlife... any chance they’ve got extra lives there?"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Player-Ui" type="CanvasLayer" parent="."]
 
@@ -665,9 +631,9 @@ vertical_alignment = 1
 script = ExtResource("9_mbjxa")
 
 [node name="count" type="Label" parent="Player-Ui/countdown"]
-offset_left = 55.0
+offset_left = 1254.0
 offset_top = 27.0
-offset_right = 148.0
+offset_right = 1347.0
 offset_bottom = 77.0
 theme_override_colors/font_color = Color(0.909804, 0.6, 0.054902, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -680,12 +646,12 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="gameTimer" type="Timer" parent="Player-Ui/countdown"]
-wait_time = 20.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player-Ui/countdown"]
-position = Vector2(49, 47)
+position = Vector2(1248, 47)
 sprite_frames = SubResource("SpriteFrames_l531o")
 animation = &"clock"
 
@@ -695,16 +661,17 @@ animation = &"clock"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -80.0
-offset_top = 22.0
-offset_right = 80.0
-offset_bottom = 76.0
+offset_left = -90.0
+offset_top = 20.0
+offset_right = 90.0
+offset_bottom = 70.0
 grow_horizontal = 2
+pivot_offset = Vector2(90, 25)
 texture = ExtResource("13_28d0v")
 expand_mode = 1
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Player-Ui/round/TextureRect"]
-position = Vector2(-500, 1)
+position = Vector2(-493, 1)
 
 [node name="roundLabel" type="Label" parent="Player-Ui/round/TextureRect/CanvasGroup"]
 anchors_preset = 5
@@ -746,34 +713,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 pivot_offset = Vector2(321, 604)
 
-[node name="PlayerProfile" type="Node" parent="Player-Ui"]
-
-[node name="Panel" type="Panel" parent="Player-Ui/PlayerProfile"]
-offset_left = 1153.0
-offset_top = 696.0
-offset_right = 1353.0
-offset_bottom = 746.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yuuy2")
-
-[node name="profileImage" type="TextureRect" parent="Player-Ui/PlayerProfile"]
-offset_left = 1151.0
-offset_top = 691.0
-offset_right = 1199.0
-offset_bottom = 738.0
-texture = ExtResource("13_a7m3b")
-expand_mode = 1
-flip_h = true
-
-[node name="userName" type="Label" parent="Player-Ui/PlayerProfile"]
-offset_left = 1206.0
-offset_top = 700.0
-offset_right = 1348.0
-offset_bottom = 739.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_pk7a5")
-theme_override_font_sizes/font_size = 32
-text = "UserName"
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.5
 blend_mode = 1
@@ -791,9 +730,20 @@ grow_vertical = 2
 color = Color(0.925921, 0.470655, 0.388767, 1)
 metadata/_edit_lock_ = true
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(683, 384)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_3gi7h")
+texture = SubResource("GradientTexture2D_ke34p")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
+
 [connection signal="health_ranout" from="player" to="." method="_on_player_health_ranout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="DeathScreen/youdead/Panel/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="DeathScreen/youdead/Panel/Restart" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="DeathScreen/youdead/Panel/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="DeathScreen/youdead/deathScreen/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="DeathScreen/youdead/deathScreen/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathScreen/youdead/deathScreen/Home" to="." method="_on_home_pressed"]
 [connection signal="timeout" from="Player-Ui/countdown/gameTimer" to="." method="_on_game_timer_timeout"]

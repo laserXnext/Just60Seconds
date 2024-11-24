@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://crmco8cyays5p"]
+
+[ext_resource type="Texture2D" uid="uid://b31q2s2p7h0fu" path="res://assets/bullets/blue-bullet@3x.png" id="1_7u507"]
+[ext_resource type="Script" path="res://script/ice_bullet.gd" id="1_am5p0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xdek"]
+radius = 26.167
+
+[sub_resource type="Gradient" id="Gradient_p2l50"]
+offsets = PackedFloat32Array(0.146667, 0.6, 0.866667)
+colors = PackedColorArray(0, 1, 1, 1, 0.109804, 0.356863, 0.760784, 1, 0.109804, 0.356863, 0.760784, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4l6d1"]
+gradient = SubResource("Gradient_p2l50")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="ice-bullet" type="Area2D"]
+scale = Vector2(0.727109, 0.727109)
+collision_layer = 4
+script = ExtResource("1_am5p0")
+
+[node name="bullet" type="Sprite2D" parent="."]
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("1_7u507")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6xdek")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.838079, 0.838079)
+texture = SubResource("GradientTexture2D_4l6d1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
