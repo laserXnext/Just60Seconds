@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b638kmb6ewucg"]
+[gd_scene load_steps=5 format=3 uid="uid://b638kmb6ewucg"]
 
 [ext_resource type="Script" path="res://script/mob.gd" id="1_uxxre"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://assets/slime/slime.tscn" id="2_w5gyu"]
+[ext_resource type="PackedScene" uid="uid://c426g7bfifrm" path="res://scene/health_bar.tscn" id="3_ywdk5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8koct"]
 radius = 47.0664
 
 [node name="mob" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_uxxre")
 
 [node name="Slime" parent="." instance=ExtResource("2_w5gyu")]
@@ -20,3 +21,9 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(0, -22)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_8koct")
+
+[node name="healthBar" parent="." instance=ExtResource("3_ywdk5")]
+offset_left = -31.0
+offset_top = -60.0
+offset_right = 32.0
+offset_bottom = -54.0

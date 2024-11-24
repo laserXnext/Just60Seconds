@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cpj5i8y6w1okf"]
+[gd_scene load_steps=57 format=3 uid="uid://cpj5i8y6w1okf"]
 
 [ext_resource type="Script" path="res://script/zombie.gd" id="1_ds7pd"]
 [ext_resource type="Texture2D" uid="uid://228elxs4i3cm" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Slashing/0_Zombie_Villager_Slashing_000.png" id="1_rqhee"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://c4e4ipp8mpxwg" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Running/0_Zombie_Villager_Running_009.png" id="49_xnafl"]
 [ext_resource type="Texture2D" uid="uid://du667sq288afb" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Running/0_Zombie_Villager_Running_010.png" id="50_e8xef"]
 [ext_resource type="Texture2D" uid="uid://b6mbo4fkpav27" path="res://assets/Zombie_Villager_2/PNG/PNG Sequences/Running/0_Zombie_Villager_Running_011.png" id="51_xpo5j"]
+[ext_resource type="PackedScene" uid="uid://c426g7bfifrm" path="res://scene/health_bar.tscn" id="53_8u4lm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d0hk4"]
 radius = 31.9412
@@ -239,7 +240,7 @@ animations = [{
 [node name="Zombie" type="CharacterBody2D"]
 scale = Vector2(0.563536, 0.563536)
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_ds7pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -258,3 +259,10 @@ scale = Vector2(0.206667, 0.206667)
 sprite_frames = SubResource("SpriteFrames_fy8j5")
 animation = &"attack"
 frame_progress = 0.607372
+
+[node name="healthBar" parent="." instance=ExtResource("53_8u4lm")]
+offset_left = -40.8137
+offset_top = -78.0784
+offset_right = 39.1863
+offset_bottom = -68.0784
+pivot_offset = Vector2(40, 5)

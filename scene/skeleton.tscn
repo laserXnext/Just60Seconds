@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://ctaxi5vkx3rln"]
+[gd_scene load_steps=64 format=3 uid="uid://ctaxi5vkx3rln"]
 
 [ext_resource type="Script" path="res://script/wraith.gd" id="1_ina2m"]
 [ext_resource type="Texture2D" uid="uid://brr2sux330p2k" path="res://assets/wraith/Wraith_01/PNG Sequences/Casting Spells/Wraith_01_Casting Spells_000.png" id="1_uwv1f"]
@@ -59,6 +59,8 @@
 [ext_resource type="Texture2D" uid="uid://dtxvrua4bw1n" path="res://assets/wraith/Wraith_01/PNG Sequences/Walking/Wraith_01_Moving Forward_010.png" id="56_p81hp"]
 [ext_resource type="Texture2D" uid="uid://dvbe5qj3x5amc" path="res://assets/wraith/Wraith_01/PNG Sequences/Walking/Wraith_01_Moving Forward_011.png" id="57_v1iet"]
 [ext_resource type="PackedScene" uid="uid://bfus2dguicc2j" path="res://scene/attack_range.tscn" id="59_f0qop"]
+[ext_resource type="FontFile" uid="uid://4bg25lw7xo2c" path="res://assets/fonts/Chokokutai/Chokokutai-Regular.ttf" id="60_pbx7g"]
+[ext_resource type="PackedScene" uid="uid://c426g7bfifrm" path="res://scene/health_bar.tscn" id="61_tul7g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i441f"]
 radius = 35.0
@@ -260,6 +262,7 @@ animations = [{
 
 [node name="wraith" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_ina2m")
 
 [node name="attack-range" parent="." instance=ExtResource("59_f0qop")]
@@ -273,3 +276,31 @@ scale = Vector2(0.480952, 0.480952)
 sprite_frames = SubResource("SpriteFrames_frbm7")
 animation = &"attack"
 frame_progress = 0.401787
+
+[node name="uiLayer" type="CanvasLayer" parent="."]
+
+[node name="name" type="Label" parent="uiLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 83.0
+offset_top = -118.0
+offset_right = 290.0
+offset_bottom = -70.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("60_pbx7g")
+theme_override_font_sizes/font_size = 32
+text = "Who ???"
+
+[node name="healthBar" parent="uiLayer" instance=ExtResource("61_tul7g")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -68.0
+offset_right = 600.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0

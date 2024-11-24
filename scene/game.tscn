@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://dgmqvtwql70pn"]
+[gd_scene load_steps=61 format=4 uid="uid://dgmqvtwql70pn"]
 
 [ext_resource type="Script" path="res://script/game.gd" id="1_qv7cb"]
 [ext_resource type="PackedScene" uid="uid://dypt7g7q5g2jg" path="res://scene/player.tscn" id="1_wmnq8"]
@@ -16,11 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://rp4hgtob8m2s" path="res://assets/clock/clock sprite.png" id="11_1qsld"]
 [ext_resource type="Texture2D" uid="uid://o8vfmgncd5dg" path="res://assets/UI - icons/Menu Buttons/Clear Menu Buttons/Pressed/Buttons-pressed-house.png" id="11_qjc0n"]
 [ext_resource type="Texture2D" uid="uid://uddl57ugdd80" path="res://assets/Paper-Panel/paper_panel_360_x_150.png" id="13_28d0v"]
-[ext_resource type="Texture2D" uid="uid://ctsr2yl622jyc" path="res://assets/Leah_2.webp" id="13_a7m3b"]
 [ext_resource type="Shader" path="res://shader/game.gdshader" id="13_olvm2"]
 [ext_resource type="Texture2D" uid="uid://cvov7xuxnhm4i" path="res://assets/BoxesBanners/TextBox_Blank_Middle.png" id="13_xnkqk"]
 [ext_resource type="FontFile" uid="uid://cbnc55c41vac3" path="res://assets/fonts/Gluten-ExtraLight.ttf" id="14_5eefd"]
-[ext_resource type="FontFile" uid="uid://ddhvjmcfs30qa" path="res://assets/fonts/Itim/Itim-Regular.ttf" id="14_pk7a5"]
 [ext_resource type="PackedScene" uid="uid://cl7t51xb863ki" path="res://scene/escape_menu.tscn" id="15_gxldy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k078s"]
@@ -448,18 +446,6 @@ animations = [{
 "speed": 13.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuuy2"]
-bg_color = Color(0.854902, 0.678431, 0.447059, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.694118, 0.305882, 0.0196078, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5pvr7"]
 frequency = 0.0075
 
@@ -550,7 +536,7 @@ rotation = -0.00077821
 metadata/_edit_lock_ = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.6
 autostart = true
 
 [node name="DeathScreen" type="Node" parent="."]
@@ -639,48 +625,15 @@ vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="RoundOver" type="Node" parent="."]
-
-[node name="youwin" type="CanvasLayer" parent="RoundOver"]
-unique_name_in_owner = true
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="RoundOver/youwin"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.521569)
-
-[node name="Label" type="Label" parent="RoundOver/youwin"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -32.0
-offset_right = 212.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.678431, 0, 1)
-theme_override_fonts/font = ExtResource("4_6ye0n")
-theme_override_font_sizes/font_size = 64
-text = "You Won"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Player-Ui" type="CanvasLayer" parent="."]
 
 [node name="countdown" type="Node" parent="Player-Ui"]
 script = ExtResource("9_mbjxa")
 
 [node name="count" type="Label" parent="Player-Ui/countdown"]
-offset_left = 55.0
+offset_left = 1254.0
 offset_top = 27.0
-offset_right = 148.0
+offset_right = 1347.0
 offset_bottom = 77.0
 theme_override_colors/font_color = Color(0.909804, 0.6, 0.054902, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -698,7 +651,7 @@ one_shot = true
 autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player-Ui/countdown"]
-position = Vector2(49, 47)
+position = Vector2(1248, 47)
 sprite_frames = SubResource("SpriteFrames_l531o")
 animation = &"clock"
 
@@ -708,16 +661,17 @@ animation = &"clock"
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -80.0
-offset_top = 22.0
-offset_right = 80.0
-offset_bottom = 76.0
+offset_left = -90.0
+offset_top = 20.0
+offset_right = 90.0
+offset_bottom = 70.0
 grow_horizontal = 2
+pivot_offset = Vector2(90, 25)
 texture = ExtResource("13_28d0v")
 expand_mode = 1
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Player-Ui/round/TextureRect"]
-position = Vector2(-500, 1)
+position = Vector2(-493, 1)
 
 [node name="roundLabel" type="Label" parent="Player-Ui/round/TextureRect/CanvasGroup"]
 anchors_preset = 5
@@ -758,34 +712,6 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 pivot_offset = Vector2(321, 604)
-
-[node name="PlayerProfile" type="Node" parent="Player-Ui"]
-
-[node name="Panel" type="Panel" parent="Player-Ui/PlayerProfile"]
-offset_left = 1153.0
-offset_top = 696.0
-offset_right = 1353.0
-offset_bottom = 746.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yuuy2")
-
-[node name="profileImage" type="TextureRect" parent="Player-Ui/PlayerProfile"]
-offset_left = 1151.0
-offset_top = 691.0
-offset_right = 1199.0
-offset_bottom = 738.0
-texture = ExtResource("13_a7m3b")
-expand_mode = 1
-flip_h = true
-
-[node name="userName" type="Label" parent="Player-Ui/PlayerProfile"]
-offset_left = 1206.0
-offset_top = 700.0
-offset_right = 1348.0
-offset_bottom = 739.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("14_pk7a5")
-theme_override_font_sizes/font_size = 32
-text = "UserName"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.5

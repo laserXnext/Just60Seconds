@@ -4,7 +4,6 @@ extends Node2D
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var round_no: Label = $"Player-Ui/round/TextureRect/CanvasGroup/roundNo"
 @onready var escape_menu: Control = $"Player-Ui/escape/escapeMenu"
-@onready var user_name: Label = $"Player-Ui/PlayerProfile/userName"
 @onready var death: AnimatedSprite2D = $DeathScreen/youdead/death
 @onready var game_timer: Timer = $"Player-Ui/countdown/gameTimer"
 
@@ -32,8 +31,8 @@ func pauseMenu():
 func _ready() -> void:
 	AudioManager.pause_music()
 	round_no.text = str(roundNo)
-	user_name.text = userName
 	spawn()
+	wraith_spawn()
 	zombie_spawn()
 
 func zombie_spawn():
@@ -42,6 +41,13 @@ func zombie_spawn():
 	new_zombie.global_position = %PathFollow2D.global_position
 	add_child(new_zombie)
 	mobs.append(new_zombie)
+
+func wraith_spawn():
+	var wraith = preload("res://scene/skeleton.tscn").instantiate()
+	%PathFollow2D.progress_ratio = randf()
+	wraith.global_position = %PathFollow2D.global_position
+	add_child(wraith)
+	mobs.append(wraith)
 
 func spawn():
 	var new_mob = preload("res://scene/mob.tscn").instantiate()

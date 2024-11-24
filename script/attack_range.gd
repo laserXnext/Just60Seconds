@@ -6,7 +6,7 @@ extends Area2D
 @onready var animation: AnimatedSprite2D = $"../animation"
 @onready var shoot_point = $"Marker2D/orb/shoot-point"
 
-const BULLET_COUNT = 5
+const BULLET_COUNT = 8
 const SPREAD_ANGLE = 0.2
 
 var is_attacking = false

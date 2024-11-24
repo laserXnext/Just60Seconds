@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcf66ulibnss4"]
+[gd_scene load_steps=22 format=3 uid="uid://bcf66ulibnss4"]
 
 [ext_resource type="Texture2D" uid="uid://cd44yc1hajmyc" path="res://assets/UI - icons/Backgound/Background_Yellow.png" id="1_2j2bf"]
+[ext_resource type="Script" path="res://script/scroll.gd" id="1_bf2hj"]
 [ext_resource type="Texture2D" uid="uid://cmfmecvk6l7sb" path="res://assets/Scroll/square.png" id="1_cugd2"]
 [ext_resource type="FontFile" uid="uid://dlww658o50acx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_ayllj"]
 [ext_resource type="Script" path="res://script/api_request.gd" id="2_uad8r"]
@@ -100,6 +101,7 @@ animations = [{
 }]
 
 [node name="Scroll" type="Node2D"]
+script = ExtResource("1_bf2hj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -238,16 +240,15 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_a1q40")
 theme_override_font_sizes/font_size = 80
-text = "Ribbit! Please hop in your username, but the password? That's just tadpole-tional!"
+text = "Take your time, but not too much—I’ve got flies to catch, you know!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Timer" parent="npc"]
-wait_time = 20.0
+[node name="waitTimer" type="Timer" parent="npc"]
+wait_time = 0.5
 one_shot = true
-autostart = true
 
 [connection signal="pressed" from="apiRequest/Button" to="apiRequest" method="_on_button_pressed"]
 [connection signal="request_completed" from="apiRequest/HTTPRequest" to="apiRequest" method="_on_http_request_request_completed"]

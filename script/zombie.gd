@@ -3,12 +3,14 @@ extends CharacterBody2D
 @onready var zombie_anime: AnimatedSprite2D = $zombieAnime
 @onready var player = get_node("/root/game/player")
 @onready var attack_box: Area2D = $Area2D
+@onready var health_bar: ProgressBar = $healthBar
 
 var difficulty = int(Global.roundNo)
 var health = 10 * difficulty
 var is_attacking = false
 
 func _ready() -> void:
+	health_bar.init_health(health)
 	zombie_anime.play("run")
 
 func _physics_process(delta: float) -> void:
@@ -40,6 +42,7 @@ func attack_player() -> void:
 
 func take_damage() -> void:
 	health -= 2.5 * difficulty
+	health_bar.health = health
 	zombie_anime.play("hurt")
 	
 	if health <= 0:

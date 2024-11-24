@@ -30,8 +30,8 @@ fill_to = Vector2(0.837398, 0.199187)
 [node name="fire" type="Area2D"]
 top_level = true
 scale = Vector2(1.57135, 1.57135)
-collision_layer = 0
-collision_mask = 3
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_3rx6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
