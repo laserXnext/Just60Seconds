@@ -12,4 +12,3 @@ void fragment() {
 	float fog = clamp(noise * 2.0 - 1.0, 0.0, 1.0);
 	COLOR.a *= fog * density;
 }
-

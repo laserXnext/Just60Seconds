@@ -1,11 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl7t51xb863ki"]
+[gd_scene load_steps=11 format=3 uid="uid://cl7t51xb863ki"]
 
 [ext_resource type="FontFile" uid="uid://dlww658o50acx" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_41xio"]
 [ext_resource type="Texture2D" uid="uid://dyue25pnd6y1o" path="res://assets/BoxesBanners/Box_Blue_Rounded.png" id="1_llix7"]
 [ext_resource type="Script" path="res://script/escape_menu.gd" id="1_osfpb"]
+[ext_resource type="Shader" path="res://shader/deathscreen.gdshader" id="2_con3p"]
 [ext_resource type="Texture2D" uid="uid://bmy4hp6863yy5" path="res://assets/ButtonsIcons/SVG/IconButton_Small_Green_Circle.svg" id="3_y5rpc"]
 [ext_resource type="Texture2D" uid="uid://bsruw307vxorg" path="res://assets/Icons/Icon_Small_Blank_X.png" id="4_yuo5a"]
 [ext_resource type="Texture2D" uid="uid://b67h74jximq83" path="res://assets/ButtonsIcons/SVG/IconButton_Small_Red_Rounded.svg" id="5_3l6kb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85xsy"]
+shader = ExtResource("2_con3p")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyy2h"]
 bg_color = Color(0.929412, 0.741176, 0.0235294, 1)
@@ -39,7 +45,7 @@ script = ExtResource("1_osfpb")
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasGroup"]
-visible = false
+material = SubResource("ShaderMaterial_85xsy")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
