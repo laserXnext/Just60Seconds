@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpef2gnqeyhjb"]
+
+[ext_resource type="Script" path="res://script/boss_warn.gd" id="1_in266"]
+[ext_resource type="Texture2D" uid="uid://tkwq5odhb5v0" path="res://assets/Game&Logo/Boss - warn.png" id="2_yhgx0"]
+[ext_resource type="FontFile" uid="uid://v1lsyq21bes2" path="res://assets/fonts/Rubik_Wet_Paint/RubikWetPaint-Regular.ttf" id="3_gg581"]
+[ext_resource type="AudioStream" uid="uid://cxkvto1w3tjg0" path="res://assets/sound_effect/severe-warning-alarm-98704.mp3" id="4_wi08v"]
+
+[node name="Boss-Warn" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_in266")
+
+[node name="warning" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 279.0
+offset_right = 993.0
+offset_bottom = 479.0
+pivot_offset = Vector2(300, 100)
+texture = ExtResource("2_yhgx0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="warning"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 101.0
+offset_right = 554.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("3_gg581")
+theme_override_font_sizes/font_size = 50
+text = "Dulneth is Coming"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="warning-alert" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wi08v")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

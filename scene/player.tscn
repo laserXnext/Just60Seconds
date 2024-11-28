@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dypt7g7q5g2jg"]
+[gd_scene load_steps=51 format=3 uid="uid://dypt7g7q5g2jg"]
 
 [ext_resource type="Texture2D" uid="uid://choow5711wl7i" path="res://assets/knight/idle.png" id="1_lk6nh"]
 [ext_resource type="Script" path="res://script/player_ani.gd" id="2_iexix"]
@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://1m7wil1uib3u" path="res://assets/CharacterAnimations/Run.png" id="4_ga5sd"]
 [ext_resource type="PackedScene" uid="uid://cbftwehnfje6f" path="res://scene/fireball.tscn" id="5_bkht3"]
 [ext_resource type="FontFile" uid="uid://ba8w6pudjptl8" path="res://assets/fonts/Gluten-Black.ttf" id="8_jjt4x"]
+[ext_resource type="FontFile" uid="uid://mq5g3n88hni4" path="res://assets/fonts/Knewave/Knewave-Regular.ttf" id="9_0qb4w"]
 [ext_resource type="PackedScene" uid="uid://c426g7bfifrm" path="res://scene/health_bar.tscn" id="9_srtia"]
-[ext_resource type="Texture2D" uid="uid://b0qkhy3be4ga3" path="res://assets/Game&Logo/Skull-Logo.png" id="10_sxlnj"]
+[ext_resource type="Texture2D" uid="uid://c8vj6itf3q1dy" path="res://assets/Game&Logo/health-Logo.png" id="10_v26g8"]
+[ext_resource type="FontFile" uid="uid://dfj23dui138kl" path="res://assets/fonts/Gluten-Regular.ttf" id="11_xmmm5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcmtj"]
 atlas = ExtResource("1_lk6nh")
@@ -401,20 +403,49 @@ text = "+5"
 
 [node name="PlayerUi" type="CanvasLayer" parent="."]
 
-[node name="healthBar" parent="PlayerUi" instance=ExtResource("9_srtia")]
-offset_left = 66.0
-offset_top = 26.0
-offset_right = 206.0
-offset_bottom = 42.0
+[node name="player_name" type="Label" parent="PlayerUi"]
+offset_left = 78.0
+offset_top = 10.0
+offset_right = 137.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.986083, 0.772104, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_0qb4w")
+theme_override_font_sizes/font_size = 16
+text = "gwuygw"
+metadata/_edit_use_anchors_ = true
 
-[node name="skull" type="TextureRect" parent="PlayerUi"]
+[node name="healthBar" parent="PlayerUi" instance=ExtResource("9_srtia")]
+offset_left = 65.0
+offset_top = 37.0
+offset_right = 185.0
+offset_bottom = 55.0
+metadata/_edit_use_anchors_ = true
+
+[node name="health" type="TextureRect" parent="PlayerUi"]
 z_index = 5
 offset_left = 21.0
-offset_top = 10.0
+offset_top = 22.0
 offset_right = 69.0
-offset_bottom = 58.0
-texture = ExtResource("10_sxlnj")
+offset_bottom = 70.0
+texture = ExtResource("10_v26g8")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="health_value" type="Label" parent="PlayerUi"]
+offset_left = 76.0
+offset_top = 58.0
+offset_right = 138.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0.894118, 0, 0.227451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("11_xmmm5")
+theme_override_font_sizes/font_size = 16
+text = "200/200"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="heal_timer" to="." method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="heal_timer/flickerTimer" to="." method="_on_flicker_timer_timeout"]

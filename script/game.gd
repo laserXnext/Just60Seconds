@@ -6,6 +6,7 @@ extends Node2D
 @onready var escape_menu: Control = $"Player-Ui/escape/escapeMenu"
 @onready var death: AnimatedSprite2D = $DeathScreen/youdead/death
 @onready var game_timer: Timer = $"Player-Ui/countdown/gameTimer"
+@onready var slime_count: Label = $slimeCount
 
 var mobs = []
 var roundNo = Global.roundNo
@@ -17,7 +18,8 @@ var paused = false
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("back"):
 		pauseMenu()
-
+	$Label.text = str(Global.slimeCount) + " " + str(Global.zombieCount) + " " + str(Global.wraithCount)
+	
 func pauseMenu():
 	if paused:
 		escape_menu.hide()
@@ -32,7 +34,6 @@ func _ready() -> void:
 	AudioManager.pause_music()
 	round_no.text = str(roundNo)
 	spawn()
-	wraith_spawn()
 	zombie_spawn()
 
 func zombie_spawn():
@@ -60,7 +61,7 @@ func mobDespawn():
 	for mob in mobs:
 		if mob and is_instance_valid(mob):
 			mob.queue_free()
-	mobs.clear()  # Clear the mob list after removal
+	mobs.clear()
 	spawn_timer.stop()
 
 
@@ -99,3 +100,6 @@ func _on_home_pressed() -> void:
 	%youdead.visible = false
 	AudioManager.resume_music()
 	Engine.time_scale = 1
+
+func _on_boss_timer_timeout() -> void:
+		wraith_spawn()

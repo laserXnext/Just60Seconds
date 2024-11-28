@@ -25,6 +25,7 @@ InteractionManager="*res://scene/interaction_manager.tscn"
 DialogManager="*res://script/dialogManager.gd"
 Global="*res://script/global.gd"
 AudioManager="*res://scene/audio_manager.tscn"
+Transition_Scene="*res://scene/transition.tscn"
 
 [display]
 

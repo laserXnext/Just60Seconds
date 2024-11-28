@@ -6,6 +6,7 @@ extends Control
 @onready var message: Label = $"../npc/MessageBox/message"
 @onready var wait_timer: Timer = $"../npc/waitTimer"
 @onready var message_box: Sprite2D = $"../npc/MessageBox"
+@onready var timer: Timer = $"../Clock/Timer"
 
 var url = "http://marcconrad.com/uob/banana/api.php?out=json"
 const next_scene: String = "res://scene/game.tscn"
@@ -57,6 +58,7 @@ func _on_image_request_completed(result: int, response_code: int, headers: Packe
 	else:
 		var texture = ImageTexture.create_from_image(image)
 		sprite.texture = texture
+		timer.start()
 
 # Generate three unique random wrong answers between 1 and 10
 func generate_random_answers() -> Array:
@@ -104,7 +106,8 @@ func _on_answer_selected(answer: String) -> void:
 func open_next_scene() -> void:
 	wait_timer.start()
 	await wait_timer.timeout
-	get_tree().change_scene_to_file(next_scene)
+	#get_tree().change_scene_to_file(next_scene)
+	Transition_Scene.change_scene(next_scene,"fade_black")
 	
 func animate_message_box() -> void:
 	var tween = get_tree().create_tween()
@@ -115,3 +118,11 @@ func animate_message_box() -> void:
 	tween.tween_property(message_box, "scale", Vector2(0.527, 0.51), 0.3)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN)
+
+
+func _on_timer_timeout() -> void:
+	message.text = "Ribbit! Time’s up! Looks like the clock hopped faster than you did!"
+	animate_message_box()
+	roundNo = 1
+	Global.roundNo = roundNo
+	open_next_scene()

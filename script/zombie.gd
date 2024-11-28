@@ -45,8 +45,9 @@ func take_damage() -> void:
 	health_bar.health = health
 	zombie_anime.play("hurt")
 	
-	if health <= 0:
+	if health == 0:
 		queue_free()
+		Global.zombieCount += 1
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)

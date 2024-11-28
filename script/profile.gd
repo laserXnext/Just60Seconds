@@ -16,13 +16,15 @@ func _on_submit_pressed() -> void:
 		Global.username = Username.text
 		Global.password = Password.text
 		Global.roundNo = 1
-		get_tree().change_scene_to_packed(GAME)
+		#get_tree().change_scene_to_packed(GAME)
+		Transition_Scene.change_scene("res://scene/game.tscn", "fade_black")
 	else:
 		animate_message_box()
 		message.text = "Ribbit! No username? What am I supposed to call you ‘Mystery Frog’? Try again, hop to it!"
 
 func _on_close_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	#get_tree().change_scene_to_file("res://main_menu.tscn")
+	Transition_Scene.change_scene("res://main_menu.tscn", "cloud")
 
 func _on_timer_timeout() -> void:
 	animate_message_box()

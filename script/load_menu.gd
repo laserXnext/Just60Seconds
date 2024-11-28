@@ -41,15 +41,20 @@ func _load_save_file(file_path: String) -> void:
 	var data: Dictionary = json.data
 	var username = data.get("username", "noname")
 	var round_number = str(data.get("round_number", 1))
+	var slime = str(data.get("slime", 0))
+	var zombie = str(data.get("zombie", 0))
+	var wraith =  str(data.get("wraith", 0))
 
 	# Instantiate SaveFile and set data
 	var save_file_instance = load("res://scene/save_file.tscn").instantiate()
 	save_file_instance.get_node("Panel/username").text = username
 	save_file_instance.get_node("Panel/roundNo").text = round_number
+	save_file_instance.get_node("stat/stat-screen/slime").text = slime
+	save_file_instance.get_node("stat/stat-screen/zombie").text = zombie
+	save_file_instance.get_node("stat/stat-screen/wraith").text = wraith
 	
 	# Add instance to the container
 	save_list_container.add_child(save_file_instance)
-
 
 func _on_close_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://main_menu.tscn")

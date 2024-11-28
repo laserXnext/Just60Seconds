@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = $healthBar
 
 var difficulty = int(Global.roundNo)
-
 var health 
 
 func _ready() -> void:
@@ -23,6 +22,7 @@ func take_damage():
 	health_bar.health = health
 	if health == 0:
 		queue_free()
+		Global.slimeCount += 1
 		const SMOKE_SCENE = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = SMOKE_SCENE.instantiate()
 		get_parent().add_child(smoke)

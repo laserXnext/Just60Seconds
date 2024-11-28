@@ -3,6 +3,7 @@ extends Node
 var roundNo = Global.roundNo
 var userName = Global.username
 var password = Global.password
+
 var save_directory: String = "C:/Users/LENOVO/Documents/noidea/saves/"
 var save_path: String = save_directory + userName + "_data.json"
 
@@ -15,7 +16,10 @@ func _save():
 	var data := {
 		"username": userName,
 		"password": password,
-		"round_number": roundNo
+		"round_number": roundNo,
+		"slime": Global.slimeCount,
+		"zombie": Global.zombieCount,
+		"wraith": Global.wraithCount
 	}
 
 	var json_string := JSON.stringify(data)
